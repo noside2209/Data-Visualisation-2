@@ -1,0 +1,23 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 300,
+  "title": "Most Australian Open Singles Titles (Men)",
+  "data": {
+    "values": [
+      {"player": "Novak Djokovic", "titles": 10},
+      {"player": "Roger Federer", "titles": 6},
+      {"player": "Andre Agassi", "titles": 4},
+      {"player": "Stefan Edberg", "titles": 4},
+      {"player": "Jim Courier", "titles": 4},
+      {"player": "Jack Crawford", "titles": 4},
+      {"player": "Rafael Nadal", "titles": 2}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "titles", "type": "quantitative", "title": "Number of Titles"},
+    "y": {"field": "player", "type": "nominal", "sort": "-x", "title": "Player"},
+    "color": {"value": "#1a78c2"}
+  }
+}
