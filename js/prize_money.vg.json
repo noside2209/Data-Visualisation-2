@@ -1,0 +1,25 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 300,
+  "title": "Australian Open Prize Money Growth (2000–2025)",
+  "data": {"url": "data/aus_open_history.csv"},
+  "mark": {"type": "line", "point": true, "color": "#1a78c2"},
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "prize_money_aud",
+      "type": "quantitative",
+      "title": "Total Prize Money (AUD)",
+      "axis": {"format": "$,.0f"}
+    },
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Year"},
+      {"field": "prize_money_aud", "type": "quantitative", "title": "Prize Money (AUD)", "format": "$,.0f"}
+    ]
+  }
+}
