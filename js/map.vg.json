@@ -15,22 +15,25 @@
           "lookup": "properties.ISO_A3",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/noside2209/Data-Visualisation-2/main/data/aus_open_atp.csv"
+              "url": "https://raw.githubusercontent.com/noside2209/Data-Visualisation-2/main/data/country_appearances.csv"
             },
-            "key": "winner_ioc",
-            "fields": ["winner_ioc"]
+            "key": "iso",
+            "fields": ["appearances"]
           }
         }
       ],
       "mark": {"type": "geoshape", "stroke": "white"},
       "encoding": {
         "color": {
-          "field": "winner_ioc",
-          "type": "nominal",
-          "legend": null
+          "field": "appearances",
+          "type": "quantitative",
+          "scale": {"scheme": "blues"},
+          "condition": {"test": "datum.appearances === null", "value": "lightgray"},
+          "legend": {"title": "Player Appearances"}
         },
         "tooltip": [
-          {"field": "properties.NAME", "type": "nominal", "title": "Country"}
+          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+          {"field": "appearances", "type": "quantitative", "title": "Appearances"}
         ]
       }
     }
