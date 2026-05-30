@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 400,
+  "title": "Seeding vs Round Reached at the Australian Open (2000–2025)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/noside2209/Data-Visualisation-2/main/data/aus_open_atp.csv"
+  },
+  "transform": [
+    {"filter": "datum.round == 'F' || datum.round == 'SF' || datum.round == 'QF' || datum.round == 'R16'"},
+    {"filter": "datum.winner_seed != '' && datum.winner_seed != null"},
+    {
+      "calculate": "datum.round == 'F' ? 4 : datum.round == 'SF' ? 3 : datum.round == 'QF' ? 2 : 1",
+      "as": "round_num"
+    },
+    {
+      "calculate": "toNumber(datum.winner_seed)",
+      "as": "seed_num"
+    },
+    {"filter": "datum.seed_num <= 16"}
+  ],
+  "mark": {"type": "circle", "opacity": 0.6},
+  "encoding": {
+    "x": {
+      "field": "seed_num",
+      "type": "quantitative",
+      "title": "Seeding",
+      "scale": {"domain": [1, 16]}
+    },
+    "y": {
+      "field": "round_num",
+      "type": "ordinal",
+      "title": "Round Reached",
+      "axis": {
+        "values": [1, 2, 3, 4],
+        "labelExpr": "datum.value == 1 ? 'R16' : datum.value == 2 ? 'QF' : datum.value == 3 ? 'SF' : 'Final'"
+      }
+    },
+    "color": {
+      "field": "winner_ioc",
+      "type": "nominal",
+      "title": "Country"
+    },
+    "size": {"value": 80},
+    "tooltip": [
+      {"field": "winner_name", "type": "nominal", "title": "Player"},
+      {"field": "seed_num", "type": "quantitative", "title": "Seeding"},
+      {"field": "round", "type": "nominal", "title": "Round"},
+      {"field": "winner_ioc", "type": "nominal", "title": "Country"}
+    ]
+  }
+}
