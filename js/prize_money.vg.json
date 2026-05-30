@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": "container",
+  "width": 600,
   "height": 300,
   "title": "Australian Open Prize Money Growth (2000–2025)",
   "data": {
