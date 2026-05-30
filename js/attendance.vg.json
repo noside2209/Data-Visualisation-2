@@ -14,10 +14,10 @@
       "title": "Year"
     },
     "y": {
-      "field": "attendance",
-      "type": "quantitative",
-      "title": "Total Attendance",
-      "axis": {"format": ","}
+    "field": "attendance",
+    "type": "quantitative",
+    "title": "Total Attendance",
+    "axis": {"format": ",.0f"}
     },
     "tooltip": [
       {"field": "year", "type": "ordinal", "title": "Year"},
