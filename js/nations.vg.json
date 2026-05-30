@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 300,
+  "title": "Number of Nations Represented at the Australian Open (2000–2025)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/noside2209/Data-Visualisation-2/main/data/aus_open_atp.csv"
+  },
+  "transform": [
+    {
+      "aggregate": [{"op": "distinct", "field": "winner_ioc", "as": "nations"}],
+      "groupby": ["tourney_date"]
+    },
+    {
+      "calculate": "substring(datum.tourney_date, 0, 4)",
+      "as": "year"
+    }
+  ],
+  "mark": {"type": "bar", "color": "#1a78c2"},
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "nations",
+      "type": "quantitative",
+      "title": "Number of Nations"
+    },
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Year"},
+      {"field": "nations", "type": "quantitative", "title": "Nations"}
+    ]
+  }
+}
