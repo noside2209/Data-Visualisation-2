@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 300,
+  "title": "How Far Australian Players Progress at the Australian Open",
+  "data": {
+    "url": "https://raw.githubusercontent.com/noside2209/Data-Visualisation-2/main/data/aus_open_atp.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.winner_ioc == 'AUS' || datum.loser_ioc == 'AUS'"
+    },
+    {
+      "calculate": "datum.round == 'F' ? 7 : datum.round == 'SF' ? 6 : datum.round == 'QF' ? 5 : datum.round == 'R16' ? 4 : datum.round == 'R32' ? 3 : datum.round == 'R64' ? 2 : 1",
+      "as": "round_num"
+    },
+    {
+      "calculate": "substring(datum.tourney_date, 0, 4)",
+      "as": "year"
+    },
+    {
+      "aggregate": [{"op": "mean", "field": "round_num", "as": "avg_round"}],
+      "groupby": ["year"]
+    }
+  ],
+  "mark": {"type": "line", "point": true, "color": "#00843D"},
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "avg_round",
+      "type": "quantitative",
+      "title": "Average Round Reached",
+      "scale": {"domain": [1, 7]},
+      "axis": {
+        "values": [1, 2, 3, 4, 5, 6, 7],
+        "labelExpr": "datum.value == 1 ? 'R128' : datum.value == 2 ? 'R64' : datum.value == 3 ? 'R32' : datum.value == 4 ? 'R16' : datum.value == 5 ? 'QF' : datum.value == 6 ? 'SF' : 'F'"
+      }
+    },
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Year"},
+      {"field": "avg_round", "type": "quantitative", "title": "Avg Round", "format": ".2f"}
+    ]
+  }
+}
