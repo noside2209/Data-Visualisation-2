@@ -3,8 +3,7 @@
   "width": "container",
   "height": 300,
   "title": "Australian Open Prize Money Growth (2000–2025)",
-  "data": {"url": "data/aus_open_history.csv"},
-  "mark": {"type": "line", "point": true, "color": "#1a78c2"},
+  "data": {"url": "https://raw.githubusercontent.com/noside2209/Data-Visualisation-2/main/data/aus_open_history.csv"},  "mark": {"type": "line", "point": true, "color": "#1a78c2"},
   "encoding": {
     "x": {
       "field": "year",
