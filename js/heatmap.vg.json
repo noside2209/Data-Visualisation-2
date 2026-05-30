@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 300,
+  "title": "Australian Open Men's Champions by Year (2000–2025)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/noside2209/Data-Visualisation-2/main/data/aus_open_history.csv"
+  },
+  "mark": {"type": "rect"},
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "mens_winner",
+      "type": "nominal",
+      "title": "Player"
+    },
+    "color": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "scale": {"scheme": "blues"},
+      "legend": {"title": "Wins"}
+    },
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Year"},
+      {"field": "mens_winner", "type": "nominal", "title": "Champion"}
+    ]
+  }
+}
