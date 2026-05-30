@@ -1,0 +1,29 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 300,
+  "title": "Most Australian Open Singles Titles (Women)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/noside2209/Data-Visualisation-2/main/data/aus_open_history.csv"
+  },
+  "transform": [
+    {
+      "aggregate": [{"op": "count", "as": "titles"}],
+      "groupby": ["womens_winner"]
+    },
+    {
+      "window": [{"op": "rank", "as": "rank"}],
+      "sort": [{"field": "titles", "order": "descending"}]
+    },
+    {"filter": "datum.rank <= 10"}
+  ],
+  "mark": {"type": "bar", "color": "#e8a0bf"},
+  "encoding": {
+    "x": {"field": "titles", "type": "quantitative", "title": "Number of Titles"},
+    "y": {"field": "womens_winner", "type": "nominal", "sort": "-x", "title": "Player"},
+    "tooltip": [
+      {"field": "womens_winner", "type": "nominal", "title": "Player"},
+      {"field": "titles", "type": "quantitative", "title": "Titles"}
+    ]
+  }
+}
