@@ -20,9 +20,14 @@
     {
       "aggregate": [
         {"op": "count", "as": "count"},
-        {"op": "values", "field": "aus_player", "as": "players"}
+        {"op": "argmin", "field": "aus_player", "as": "player1"},
+        {"op": "argmax", "field": "aus_player", "as": "player2"}
       ],
       "groupby": ["year"]
+    },
+    {
+      "calculate": "datum.player1.aus_player + (datum.player2.aus_player != datum.player1.aus_player ? ', ' + datum.player2.aus_player : '')",
+      "as": "player_names"
     }
   ],
   "mark": {"type": "bar", "color": "#00843D"},
@@ -32,7 +37,7 @@
     "tooltip": [
       {"field": "year", "type": "ordinal", "title": "Year"},
       {"field": "count", "type": "quantitative", "title": "Australians in QF+"},
-      {"field": "players", "type": "nominal", "title": "Players"}
+      {"field": "player_names", "type": "nominal", "title": "Players"}
     ]
   }
 }
