@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 600,
+  "width": 500,
   "height": 300,
   "title": "Australian Open Men's Champions by Year (2000–2026)",
   "data": {
@@ -11,7 +11,8 @@
     "x": {
       "field": "year",
       "type": "ordinal",
-      "title": "Year"
+      "title": "Year",
+      "axis": {"labelAngle": -45}
     },
     "y": {
       "field": "mens_winner",
@@ -22,7 +23,7 @@
       "aggregate": "count",
       "type": "quantitative",
       "scale": {"scheme": "blues"},
-      "legend": {"title": "Wins"}
+      "legend": null
     },
     "tooltip": [
       {"field": "year", "type": "ordinal", "title": "Year"},
