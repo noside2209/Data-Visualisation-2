@@ -4,32 +4,8 @@
   "height": 300,
   "title": "Australian Players Reaching Quarterfinals or Better (2000–2026)",
   "data": {
-    "url": "https://raw.githubusercontent.com/noside2209/Data-Visualisation-2/main/data/aus_open_atp.csv"
+    "url": "https://raw.githubusercontent.com/noside2209/Data-Visualisation-2/main/data/aus_qf_players.csv"
   },
-  "transform": [
-    {"filter": "datum.round == 'QF' || datum.round == 'SF' || datum.round == 'F'"},
-    {"filter": "datum.winner_ioc == 'AUS' || datum.loser_ioc == 'AUS'"},
-    {
-      "calculate": "floor(datum.tourney_date / 10000)",
-      "as": "year"
-    },
-    {
-      "calculate": "datum.winner_ioc == 'AUS' ? datum.winner_name : datum.loser_name",
-      "as": "aus_player"
-    },
-    {
-      "aggregate": [
-        {"op": "count", "as": "count"},
-        {"op": "argmin", "field": "aus_player", "as": "player1"},
-        {"op": "argmax", "field": "aus_player", "as": "player2"}
-      ],
-      "groupby": ["year"]
-    },
-    {
-      "calculate": "datum.player1.aus_player + (datum.player2.aus_player != datum.player1.aus_player ? ', ' + datum.player2.aus_player : '')",
-      "as": "player_names"
-    }
-  ],
   "mark": {"type": "bar", "color": "#00843D"},
   "encoding": {
     "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelAngle": -45}},
@@ -37,7 +13,7 @@
     "tooltip": [
       {"field": "year", "type": "ordinal", "title": "Year"},
       {"field": "count", "type": "quantitative", "title": "Australians in QF+"},
-      {"field": "player_names", "type": "nominal", "title": "Players"}
+      {"field": "players", "type": "nominal", "title": "Players"}
     ]
   }
 }
