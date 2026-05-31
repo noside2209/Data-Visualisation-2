@@ -28,10 +28,10 @@
       "encoding": {"x": {"datum": "2021"}}
     },
     {
-      "mark": {"type": "text", "color": "#ff6b35", "align": "left", "dx": 5, "dy": -80, "fontSize": 11},
+      "mark": {"type": "text", "color": "#ff6b35", "align": "left", "dx": 5, "dy": -60, "fontSize": 11},
       "encoding": {
         "x": {"datum": "2021"},
-        "text": {"value": "COVID-19 restrictions"}
+        "text": {"value": "COVID-19"}
       }
     },
     {
@@ -50,10 +50,10 @@
       "encoding": {"x": {"datum": "2026"}}
     },
     {
-      "mark": {"type": "text", "color": "#00ff88", "align": "right", "dx": -5, "dy": -80, "fontSize": 11},
+      "mark": {"type": "text", "color": "#00ff88", "align": "right", "dx": -5, "dy": -100, "fontSize": 11},
       "encoding": {
         "x": {"datum": "2026"},
-        "text": {"value": "First $100M+ purse"}
+        "text": {"value": "First $100M+"}
       }
     }
   ]

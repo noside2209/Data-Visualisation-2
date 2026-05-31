@@ -34,10 +34,10 @@
       "encoding": {"x": {"datum": "2026"}}
     },
     {
-      "mark": {"type": "text", "color": "#00aeef", "align": "right", "dx": -5, "dy": -80, "fontSize": 11},
+      "mark": {"type": "text", "color": "#00aeef", "align": "right", "dx": -5, "dy": -100, "fontSize": 11},
       "encoding": {
         "x": {"datum": "2026"},
-        "text": {"value": "Record 1.2M+ attendance"}
+        "text": {"value": "Record 1.3M"}
       }
     }
   ]
