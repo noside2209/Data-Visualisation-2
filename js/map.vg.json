@@ -27,9 +27,10 @@
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/noside2209/Data-Visualisation-2/main/data/country_appearances.csv"
+        "url": "https://raw.githubusercontent.com/noside2209/Data-Visualisation-2/main/data/country_appearances_by_year.csv"
       },
       "transform": [
+        {"filter": "datum.year == year_select"},
         {
           "lookup": "iso",
           "from": {
@@ -48,12 +49,13 @@
         "color": {
           "field": "appearances",
           "type": "quantitative",
-          "scale": {"scheme": "blues"},
+          "scale": {"scheme": "blues", "domain": [0, 50]},
           "legend": {"title": "Appearances"}
         },
         "tooltip": [
           {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-          {"field": "appearances", "type": "quantitative", "title": "Appearances"}
+          {"field": "appearances", "type": "quantitative", "title": "Appearances"},
+          {"field": "year", "type": "ordinal", "title": "Year"}
         ]
       }
     }
