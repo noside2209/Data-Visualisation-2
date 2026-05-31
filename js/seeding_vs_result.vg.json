@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 600,
+  "width": 500,
   "height": 400,
   "title": "Do Higher Seeds Go Further? Seeding vs Round Reached (2000–2026)",
   "data": {
@@ -8,10 +8,7 @@
   },
   "transform": [
     {"filter": "datum.winner_seed != '' && datum.winner_seed != null"},
-    {
-      "calculate": "toNumber(datum.winner_seed)",
-      "as": "seed_num"
-    },
+    {"calculate": "toNumber(datum.winner_seed)", "as": "seed_num"},
     {"filter": "datum.seed_num <= 8"},
     {
       "calculate": "datum.round == 'F' ? 7 : datum.round == 'SF' ? 6 : datum.round == 'QF' ? 5 : datum.round == 'R16' ? 4 : datum.round == 'R32' ? 3 : datum.round == 'R64' ? 2 : 1",
@@ -22,25 +19,36 @@
       "groupby": ["seed_num"]
     }
   ],
-  "mark": {"type": "bar", "color": "#1a78c2"},
-  "encoding": {
-    "x": {
-      "field": "seed_num",
-      "type": "ordinal",
-      "title": "Seeding"
-    },
-    "y": {
-      "field": "avg_round",
-      "type": "quantitative",
-      "title": "Average Round Reached",
-      "axis": {
-        "values": [1, 2, 3, 4, 5, 6, 7],
-        "labelExpr": "datum.value == 1 ? 'R128' : datum.value == 2 ? 'R64' : datum.value == 3 ? 'R32' : datum.value == 4 ? 'R16' : datum.value == 5 ? 'QF' : datum.value == 6 ? 'SF' : 'Final'"
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#1a78c2"},
+      "encoding": {
+        "x": {"field": "seed_num", "type": "ordinal", "title": "Seeding"},
+        "y": {"value": 0},
+        "y2": {
+          "field": "avg_round",
+          "type": "quantitative"
+        }
       }
     },
-    "tooltip": [
-      {"field": "seed_num", "type": "ordinal", "title": "Seeding"},
-      {"field": "avg_round", "type": "quantitative", "title": "Avg Round", "format": ".2f"}
-    ]
-  }
+    {
+      "mark": {"type": "point", "filled": true, "size": 150, "color": "#00aeef"},
+      "encoding": {
+        "x": {"field": "seed_num", "type": "ordinal", "title": "Seeding"},
+        "y": {
+          "field": "avg_round",
+          "type": "quantitative",
+          "title": "Average Round Reached",
+          "axis": {
+            "values": [1, 2, 3, 4, 5, 6, 7],
+            "labelExpr": "datum.value == 1 ? 'R128' : datum.value == 2 ? 'R64' : datum.value == 3 ? 'R32' : datum.value == 4 ? 'R16' : datum.value == 5 ? 'QF' : datum.value == 6 ? 'SF' : 'Final'"
+          }
+        },
+        "tooltip": [
+          {"field": "seed_num", "type": "ordinal", "title": "Seeding"},
+          {"field": "avg_round", "type": "quantitative", "title": "Avg Round", "format": ".2f"}
+        ]
+      }
+    }
+  ]
 }

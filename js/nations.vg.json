@@ -12,18 +12,14 @@
       "groupby": ["tourney_date"]
     },
     {
-      "calculate": "substring(datum.tourney_date, 0, 4)",
+      "calculate": "floor(datum.tourney_date / 10000)",
       "as": "year"
     }
   ],
-  "mark": {"type": "bar", "color": "#1a78c2"},
+  "mark": {"type": "line", "point": true, "color": "#00aeef"},
   "encoding": {
     "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelAngle": -45}},
-    "y": {
-      "field": "nations",
-      "type": "quantitative",
-      "title": "Number of Nations"
-    },
+    "y": {"field": "nations", "type": "quantitative", "title": "Number of Nations", "scale": {"domain": [0, 35]}},
     "tooltip": [
       {"field": "year", "type": "ordinal", "title": "Year"},
       {"field": "nations", "type": "quantitative", "title": "Nations"}
