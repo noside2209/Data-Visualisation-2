@@ -9,7 +9,12 @@
   "mark": {"type": "bar", "color": "#00843D"},
   "encoding": {
     "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelAngle": -45}},
-    "y": {"field": "count", "type": "quantitative", "title": "Number of Australians in QF+"},
+    "y": {
+      "field": "count",
+      "type": "quantitative",
+      "title": "Number of Australians in QF+",
+      "axis": {"tickMinStep": 1}
+    },
     "tooltip": [
       {"field": "year", "type": "ordinal", "title": "Year"},
       {"field": "count", "type": "quantitative", "title": "Australians in QF+"},
