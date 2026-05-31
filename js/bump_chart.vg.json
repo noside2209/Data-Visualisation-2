@@ -21,7 +21,11 @@
       "sort": [{"field": "titles", "order": "descending"}],
       "groupby": ["decade"]
     },
-    {"filter": "datum.rank <= 5"}
+    {"filter": "datum.rank <= 5"},
+    {
+      "calculate": "datum.winner_ioc == 'ESP' ? 'Spain' : datum.winner_ioc == 'SRB' ? 'Serbia' : datum.winner_ioc == 'SUI' ? 'Switzerland' : datum.winner_ioc == 'RUS' ? 'Russia' : datum.winner_ioc == 'USA' ? 'United States' : datum.winner_ioc == 'ITA' ? 'Italy' : datum.winner_ioc == 'SWE' ? 'Sweden' : datum.winner_ioc == 'AUS' ? 'Australia' : datum.winner_ioc == 'GER' ? 'Germany' : datum.winner_ioc",
+      "as": "country_name"
+    }
   ],
   "mark": {"type": "line", "point": true},
   "encoding": {
@@ -37,12 +41,12 @@
       "scale": {"domain": [1, 2, 3, 4, 5]}
     },
     "color": {
-      "field": "winner_ioc",
+      "field": "country_name",
       "type": "nominal",
       "title": "Country"
     },
     "tooltip": [
-      {"field": "winner_ioc", "type": "nominal", "title": "Country"},
+      {"field": "country_name", "type": "nominal", "title": "Country"},
       {"field": "decade", "type": "ordinal", "title": "Decade"},
       {"field": "rank", "type": "ordinal", "title": "Rank"},
       {"field": "titles", "type": "quantitative", "title": "Titles"}

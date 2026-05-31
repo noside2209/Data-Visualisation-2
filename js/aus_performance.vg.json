@@ -9,10 +9,7 @@
   "transform": [
     {"filter": "datum.round == 'QF' || datum.round == 'SF' || datum.round == 'F'"},
     {"filter": "datum.winner_ioc == 'AUS' || datum.loser_ioc == 'AUS'"},
-    {
-      "calculate": "substring(datum.tourney_date, 0, 4)",
-      "as": "year"
-    },
+    {"calculate": "floor(datum.tourney_date / 10000)", "as": "year"},
     {"aggregate": [{"op": "count", "as": "count"}], "groupby": ["year"]}
   ],
   "mark": {"type": "bar", "color": "#00843D"},
