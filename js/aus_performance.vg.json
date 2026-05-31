@@ -2,20 +2,38 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 600,
   "height": 300,
-  "title": "Australian Players Reaching Quarterfinals or Better (2000–2025)",
+  "title": "Australian Players Reaching Quarterfinals or Better (2000–2026)",
   "data": {
     "url": "https://raw.githubusercontent.com/noside2209/Data-Visualisation-2/main/data/aus_open_atp.csv"
   },
   "transform": [
-    {"filter": "datum.round == 'QF' || datum.round == 'SF' || datum.round == 'F'"},
-    {"filter": "datum.winner_ioc == 'AUS' || datum.loser_ioc == 'AUS'"},
-    {"calculate": "floor(datum.tourney_date / 10000)", "as": "year"},
-    {"aggregate": [{"op": "count", "as": "count"}], "groupby": ["year"]}
+    {
+      "filter": "datum.round == 'QF' || datum.round == 'SF' || datum.round == 'F'"
+    },
+    {
+      "filter": "datum.winner_ioc == 'AUS' || datum.loser_ioc == 'AUS'"
+    },
+    {
+      "calculate": "floor(datum.tourney_date / 10000)",
+      "as": "year"
+    },
+    {
+      "aggregate": [{"op": "count", "as": "count"}],
+      "groupby": ["year"]
+    }
   ],
   "mark": {"type": "bar", "color": "#00843D"},
   "encoding": {
-    "x": {"field": "year", "type": "ordinal", "title": "Year"},
-    "y": {"field": "count", "type": "quantitative", "title": "Number of Australians in QF+"},
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "count",
+      "type": "quantitative",
+      "title": "Number of Australians in QF+"
+    },
     "tooltip": [
       {"field": "year", "type": "ordinal", "title": "Year"},
       {"field": "count", "type": "quantitative", "title": "Australians in QF+"}
