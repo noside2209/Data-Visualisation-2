@@ -10,7 +10,7 @@
     {
       "mark": {"type": "line", "point": true, "color": "#1a78c2"},
       "encoding": {
-        "x": {"field": "year", "type": "ordinal", "title": "Year"},
+        "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelAngle": -45}},
         "y": {
           "field": "prize_money_aud",
           "type": "quantitative",
@@ -24,26 +24,26 @@
       }
     },
     {
-      "mark": {"type": "rule", "color": "red", "strokeDash": [4, 4]},
+      "mark": {"type": "rule", "color": "#ff6b35", "strokeDash": [4, 4]},
       "encoding": {
         "x": {"datum": "2021"}
       }
     },
     {
-      "mark": {"type": "text", "color": "red", "align": "left", "dx": 5, "dy": -80, "fontSize": 11},
+      "mark": {"type": "text", "color": "#ff6b35", "align": "left", "dx": 5, "dy": -80, "fontSize": 11},
       "encoding": {
         "x": {"datum": "2021"},
         "text": {"value": "COVID-19 restrictions"}
       }
     },
     {
-      "mark": {"type": "rule", "color": "green", "strokeDash": [4, 4]},
+      "mark": {"type": "rule", "color": "#00aeef", "strokeDash": [4, 4]},
       "encoding": {
         "x": {"datum": "2015"}
       }
     },
     {
-      "mark": {"type": "text", "color": "green", "align": "left", "dx": 5, "dy": -80, "fontSize": 11},
+      "mark": {"type": "text", "color": "#00aeef", "align": "left", "dx": 5, "dy": -80, "fontSize": 11},
       "encoding": {
         "x": {"datum": "2015"},
         "text": {"value": "First $40M purse"}

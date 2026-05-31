@@ -18,11 +18,7 @@
   ],
   "mark": {"type": "bar", "color": "#1a78c2"},
   "encoding": {
-    "x": {
-      "field": "year",
-      "type": "ordinal",
-      "title": "Year"
-    },
+    "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelAngle": -45}},
     "y": {
       "field": "nations",
       "type": "quantitative",
