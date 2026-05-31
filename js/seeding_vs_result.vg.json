@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500,
+  "width": 600,
   "height": 400,
   "title": "Do Higher Seeds Go Further? Seeding vs Round Reached (2000–2026)",
   "data": {
