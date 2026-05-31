@@ -17,14 +17,20 @@
     {
       "aggregate": [{"op": "mean", "field": "round_num", "as": "avg_round"}],
       "groupby": ["seed_num"]
-    }
+    },
+    {"calculate": "0", "as": "zero"}
   ],
   "layer": [
     {
-      "mark": {"type": "rule", "color": "#1a78c2"},
+      "mark": {"type": "rule", "color": "#1a78c2", "strokeWidth": 2},
       "encoding": {
         "x": {"field": "seed_num", "type": "ordinal", "title": "Seeding"},
-        "y": {"value": 0},
+        "y": {"field": "zero", "type": "quantitative", "title": "Average Round Reached",
+          "axis": {
+            "values": [1, 2, 3, 4, 5, 6, 7],
+            "labelExpr": "datum.value == 1 ? 'R128' : datum.value == 2 ? 'R64' : datum.value == 3 ? 'R32' : datum.value == 4 ? 'R16' : datum.value == 5 ? 'QF' : datum.value == 6 ? 'SF' : 'Final'"
+          }
+        },
         "y2": {"field": "avg_round"}
       }
     },
@@ -34,12 +40,7 @@
         "x": {"field": "seed_num", "type": "ordinal", "title": "Seeding"},
         "y": {
           "field": "avg_round",
-          "type": "quantitative",
-          "title": "Average Round Reached",
-          "axis": {
-            "values": [1, 2, 3, 4, 5, 6, 7],
-            "labelExpr": "datum.value == 1 ? 'R128' : datum.value == 2 ? 'R64' : datum.value == 3 ? 'R32' : datum.value == 4 ? 'R16' : datum.value == 5 ? 'QF' : datum.value == 6 ? 'SF' : 'Final'"
-          }
+          "type": "quantitative"
         },
         "tooltip": [
           {"field": "seed_num", "type": "ordinal", "title": "Seeding"},
