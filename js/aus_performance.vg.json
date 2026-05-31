@@ -7,32 +7,32 @@
     "url": "https://raw.githubusercontent.com/noside2209/Data-Visualisation-2/main/data/aus_open_atp.csv"
   },
   "transform": [
-    {
-      "filter": "datum.round == 'QF' || datum.round == 'SF' || datum.round == 'F'"
-    },
-    {
-      "filter": "datum.winner_ioc == 'AUS' || datum.loser_ioc == 'AUS'"
-    },
+    {"filter": "datum.round == 'QF' || datum.round == 'SF' || datum.round == 'F'"},
+    {"filter": "datum.winner_ioc == 'AUS' || datum.loser_ioc == 'AUS'"},
     {
       "calculate": "floor(datum.tourney_date / 10000)",
       "as": "year"
     },
     {
-      "aggregate": [{"op": "count", "as": "count"}],
+      "calculate": "datum.winner_ioc == 'AUS' ? datum.winner_name : datum.loser_name",
+      "as": "aus_player"
+    },
+    {
+      "aggregate": [
+        {"op": "count", "as": "count"},
+        {"op": "values", "field": "aus_player", "as": "players"}
+      ],
       "groupby": ["year"]
     }
   ],
   "mark": {"type": "bar", "color": "#00843D"},
   "encoding": {
     "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelAngle": -45}},
-    "y": {
-      "field": "count",
-      "type": "quantitative",
-      "title": "Number of Australians in QF+"
-    },
+    "y": {"field": "count", "type": "quantitative", "title": "Number of Australians in QF+"},
     "tooltip": [
       {"field": "year", "type": "ordinal", "title": "Year"},
-      {"field": "count", "type": "quantitative", "title": "Australians in QF+"}
+      {"field": "count", "type": "quantitative", "title": "Australians in QF+"},
+      {"field": "players", "type": "nominal", "title": "Players"}
     ]
   }
 }
