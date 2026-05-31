@@ -26,10 +26,8 @@
         "x": {"field": "seed_num", "type": "ordinal", "title": "Seeding"},
         "y": {"value": 0},
         "y2": {
-          "field": "avg_round",
-          "type": "quantitative"
-        }
-      }
+          "field": "avg_round"        
+      }}
     },
     {
       "mark": {"type": "point", "filled": true, "size": 150, "color": "#00aeef"},
