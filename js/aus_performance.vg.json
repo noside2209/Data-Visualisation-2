@@ -6,7 +6,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/noside2209/Data-Visualisation-2/main/data/aus_qf_players.csv"
   },
-  "mark": {"type": "bar", "color": "#00843D"},
+  "mark": {"type": "bar", "color": "#00aeef"},
   "encoding": {
     "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelAngle": -45}},
     "y": {
