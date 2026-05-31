@@ -17,7 +17,7 @@
       "encoding": {
         "x": {"field": "titles", "type": "quantitative", "title": "Number of Titles"},
         "y": {"field": "womens_winner", "type": "nominal", "sort": "-x", "title": "Player"},
-        "color": {"field": "titles", "type": "quantitative", "scale": {"scheme": "pinkblue"}, "legend": null},
+        "color": {"field": "titles", "type": "quantitative", "scale": {"scheme": "purplered"}, "legend": null},
         "tooltip": [
           {"field": "womens_winner", "type": "nominal", "title": "Player"},
           {"field": "titles", "type": "quantitative", "title": "Titles"}
